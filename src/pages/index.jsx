@@ -23,8 +23,14 @@ const Divider = styled(ParallaxLayer)`
   clip-path: ${props => props.clipPath};
 `;
 
-const DividerMiddle = styled(Divider)`
-  clip-path: polygon(0 15%, 100% 25%, 100% 85%, 0 75%);
+const AvatarWrapper = styled.div`
+  ${tw('flex items-center')};
+`;
+
+const Avatar = styled.img`
+  border-radius: 50%;
+  width: 150px;
+  margin-right: 2rem;
 `;
 
 const Content = styled(ParallaxLayer)`
@@ -35,89 +41,18 @@ const Hero = styled.div`
   ${tw('w-full xl:w-2/3')};
 `;
 
-const Inner = styled.div`
-  ${tw('w-full xxl:w-2/3 text-center lg:text-left')};
-`;
-
 const BigTitle = styled.h1`
   ${tw('text-5xl lg:text-6xl font-mono text-white mb-6 tracking-wide')};
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `;
 
-const Title = styled.h1`
-  ${tw('text-4xl lg:text-4xl font-mono text-white mb-8 tracking-wide relative inline-block')};
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  &:before {
-    content: '';
-    width: 40px;
-    height: 40px;
-    background: url(${triangle});
-    position: absolute;
-    background-size: 40px;
-    animation: ${rotate} 4s linear infinite;
-    left: -60px;
-    top: 5px;
-  }
-`;
-
 const Subtitle = styled.p`
-  ${tw('text-xl lg:text-3xl font-mono text-white mt-8 xxl:w-3/4')};
+  ${tw('text-xl lg:text-xl leading-normal font-mono text-white mt-8 xxl:w-3/4')};
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-`;
-
-const ProjectsWrapper = styled.div`
-  ${tw('flex flex-wrap justify-between mt-8')};
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(2, 1fr);
-  @media (max-width: 1200px) {
-    grid-gap: 3rem;
-  }
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-  }
-`;
-
-const WaveWrapper = styled.div`
-  ${tw('absolute pin-b w-full')};
-  transform: matrix(1, 0, 0, -1, 0, 0);
-`;
-
-const InnerWave = styled.div`
-  ${tw('relative h-full')};
-  svg {
-    width: 100%;
-    height: 40vh;
-  }
-`;
-
-const AboutHero = styled.div`
-  ${tw('flex flex-col lg:flex-row items-center mt-8')};
-`;
-
-const Avatar = styled.img`
-  ${tw('rounded-full w-32 xl:w-48 shadow-lg h-auto')};
-`;
-
-const AboutSub = styled.span`
-  ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl')};
-`;
-
-const AboutDesc = styled.p`
-  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl font-mono pt-6 md:pt-12 text-justify')};
 `;
 
 const ContactText = styled.p`
   ${tw('text-grey-light font-mono text-xl md:text-2xl lg:text-3xl')};
-  a {
-    color: #e07628;
-    text-decoration: none;
-  }
-`;
-
-const Footer = styled.footer`
-  ${tw('text-center text-grey absolute pin-b p-6 font-mono text-md lg:text-lg')};
   a {
     color: #e07628;
     text-decoration: none;
@@ -134,38 +69,43 @@ const Index = () => (
     <Parallax pages={1}>
       <Divider speed={0.2} offset={0}>
         <UpDown>
-          <SVG icon="javascript" className={hidden} width={24} fill={colors.orange} left="10%" top="20%" />
-          <SVG icon="laravel" width={48} fill="#FD4F31" left="60%" top="70%" />
-          <SVG icon="dev" width={64} fill={colors.green} left="85%" top="10%" />
-          <SVG icon="git" width={12} fill={colors['grey-darker']} left="60%" top="15%" />
+          <SVG icon="javascript" className={hidden} width={24} fill="#F0DB4F" left="10%" top="20%" />
+          <SVG icon="laravel" width={48} fill="rgba(255,255,255,0.4)" left="60%" top="70%" />
+          <SVG icon="dev" width={64} fill="rgba(255,255,255,0.4)" left="85%" top="40%" />
+          <SVG icon="git" width={12} fill="rgba(255,255,255,0.4)" left="60%" top="15%" />
         </UpDown>
         <UpDownWide>
-          <SVG icon="php" className={hidden} width={24} fill="#6181B6" left="80%" top="10%" />
-          <SVG icon="react" width={24} fill="#61DAFB" left="90%" top="50%" />
-          <SVG icon="git" width={16} fill={colors['grey-darkest']} left="30%" top="65%" />
-          <SVG icon="wordpress" width={12} fill={colors['grey-darkest']} left="70%" top="10%" />
-          <SVG icon="react" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
+          <SVG icon="php" className={hidden} width={24} fill="rgba(255,255,255,0.4)" left="80%" top="10%" />
+          <SVG icon="react" width={48} fill="#61DAFB" left="70%" top="30%" />
+          <SVG icon="git" width={16} fill="rgba(255,255,255,0.4)" left="30%" top="65%" />
+          <SVG icon="wordpress" width={12} fill="rgba(255,255,255,0.4)" left="70%" top="10%" />
+          <SVG icon="react" className={hidden} width={8} fill="rgba(255,255,255,0.4)" left="45%" top="10%" />
         </UpDownWide>
-        <SVG icon="aws" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />
-        <SVG icon="redis" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />
-        <SVG icon="webpack" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />
-        <SVG icon="upDown" width={8} fill={colors['grey-darkest']} left="95%" top="90%" />
-        <SVG icon="upDown" className={hidden} width={24} fill={colors['grey-darker']} left="40%" top="80%" />
-        <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
-        <SVG icon="mysql" className={hidden} width={64} fill="#00618A" left="5%" top="90%" />
-        <SVG icon="box" width={6} fill={colors['grey-darkest']} left="10%" top="10%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="40%" top="20%" />
-        <SVG icon="hexa" width={16} stroke={colors['grey-darker']} left="10%" top="50%" />
-        <SVG icon="hexa" width={8} stroke={colors['grey-darker']} left="80%" top="70%" />
+        <SVG icon="aws" className={hidden} width={24} fill="rgba(255,255,255,0.4)" left="5%" top="70%" />
+        <SVG icon="redis" width={6} fill="rgba(255,255,255,0.4)" left="4%" top="20%" />
+        <SVG icon="webpack" width={12} fill="rgba(255,255,255,0.4)" left="50%" top="65%" />
+        <SVG icon="upDown" width={8} fill="rgba(255,255,255,0.4)" left="95%" top="90%" />
+        <SVG icon="upDown" className={hidden} width={24} fill="rgba(255,255,255,0.4)" left="40%" top="80%" />
+        <SVG icon="triangle" width={8} stroke="rgba(255,255,255,0.4)" left="25%" top="5%" />
+        <SVG icon="mysql" className={hidden} width={64} fill="rgba(255,255,255,0.4)" left="5%" top="90%" />
+        <SVG icon="box" width={6} fill="rgba(255,255,255,0.4)" left="10%" top="5%" />
+        <SVG icon="box" width={12} fill="rgba(255,255,255,0.4)" left="40%" top="10%" />
+        <SVG icon="hexa" width={16} stroke="rgba(255,255,255,0.4)" left="10%" top="50%" />
+        <SVG icon="hexa" width={8} stroke="rgba(255,255,255,0.4)" left="80%" top="70%" />
       </Divider>
       <Content speed={0.4} offset={0}>
         <Hero>
-          <BigTitle>
-            Hey, <br /> I'm Nick Barrett.
-          </BigTitle>
-          <Subtitle>
-            I'm a full stack software developer with a passion for the web. I enjoy creating elegant solutions to real world problems.
-          </Subtitle>
+          <AvatarWrapper>
+            <div>
+              <Avatar src={avatar} />
+            </div>
+            <BigTitle>
+              Hey, <br /> I'm Nick Barrett.
+            </BigTitle>
+          </AvatarWrapper>
+            <Subtitle>
+              I'm a full stack software developer from<br />Perth, Western Australia.<br /><br />I have a passion for the web and I enjoy creating<br />elegant solutions to real world problems.
+            </Subtitle>
           <ContactText>
             <LinkIcon href="https://github.com/njbarrett">
               <SVG icon="github" position="static" width={16} fill={colors.white} />
