@@ -6,8 +6,7 @@ import 'typeface-open-sans';
 import { Parallax, ParallaxLayer } from 'react-spring/dist/addons';
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
-import ProjectCard from '../components/ProjectCard';
-import { rotate, UpDown, UpDownWide, waveAnimation } from '../styles/animations';
+import { UpDown, UpDownWide } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import triangle from '../images/triangle.svg';
@@ -15,7 +14,7 @@ import avatar from '../images/avatar.jpg';
 import '../styles/global';
 
 const Divider = styled(ParallaxLayer)`
-  ${tw('absolute w-full h-full')};
+  ${tw('md:absolute md:w-full md:h-full')};
   background: ${props => props.bg};
   svg {
     fill: ${props => props.fill};
@@ -24,13 +23,16 @@ const Divider = styled(ParallaxLayer)`
 `;
 
 const AvatarWrapper = styled.div`
-  ${tw('flex items-center')};
+  ${tw('md:flex items-center')};
 `;
 
 const Avatar = styled.img`
   border-radius: 50%;
   width: 150px;
   margin-right: 2rem;
+  @media (max-height: 600px) {
+    display: none;
+  }
 `;
 
 const Content = styled(ParallaxLayer)`
@@ -42,7 +44,7 @@ const Hero = styled.div`
 `;
 
 const BigTitle = styled.h1`
-  ${tw('text-5xl lg:text-6xl font-mono text-white mb-6 tracking-wide')};
+  ${tw('text-3xl lg:text-4xl font-mono text-white mb-6 tracking-wide')};
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `;
 
@@ -70,15 +72,15 @@ const Index = () => (
       <Divider speed={0.2} offset={0}>
         <UpDown>
           <SVG icon="javascript" className={hidden} width={24} fill="#F0DB4F" left="10%" top="20%" />
-          <SVG icon="laravel" width={48} fill="rgba(255,255,255,0.4)" left="60%" top="70%" />
+          <SVG icon="laravel" className={hidden} width={48} fill="rgba(255,255,255,0.4)" left="60%" top="70%" />
           <SVG icon="dev" width={64} fill="rgba(255,255,255,0.4)" left="85%" top="40%" />
           <SVG icon="git" width={12} fill="rgba(255,255,255,0.4)" left="60%" top="15%" />
         </UpDown>
         <UpDownWide>
           <SVG icon="php" className={hidden} width={24} fill="rgba(255,255,255,0.4)" left="80%" top="10%" />
-          <SVG icon="react" width={48} fill="#61DAFB" left="70%" top="30%" />
+          <SVG icon="react" className={hidden} width={48} fill="#61DAFB" left="70%" top="30%" />
           <SVG icon="git" width={16} fill="rgba(255,255,255,0.4)" left="30%" top="65%" />
-          <SVG icon="wordpress" width={12} fill="rgba(255,255,255,0.4)" left="70%" top="10%" />
+          <SVG icon="wordpress" className={hidden} width={12} fill="rgba(255,255,255,0.4)" left="70%" top="10%" />
           <SVG icon="react" className={hidden} width={8} fill="rgba(255,255,255,0.4)" left="45%" top="10%" />
         </UpDownWide>
         <SVG icon="aws" className={hidden} width={24} fill="rgba(255,255,255,0.4)" left="5%" top="70%" />
